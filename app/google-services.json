@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1000444164597",
+    "firebase_url": "https://health-unchained.firebaseio.com/",
+    "project_id": "health-unchained",
+    "storage_bucket": "health-unchained.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000444164597:android:ff7da950931df548",
+        "android_client_info": {
+          "package_name": "org.healthunchained.healthunchained"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000444164597-tja5fktg48sl8p05h1gaf0fc2kiugs0j.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1000444164597-tja5fktg48sl8p05h1gaf0fc2kiugs0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHc1dPZ_SrqmhDJlgHZkW6xzIJgCg3_DE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
