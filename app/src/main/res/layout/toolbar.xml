@@ -30,6 +30,7 @@
             android:id="@+id/tv_time_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
             android:text="start time"
             android:gravity="left"
             android:layout_weight="1"/>
@@ -38,6 +39,7 @@
                 android:id="@+id/tv_time_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
                 android:text="end time"
                 android:gravity="right"
                 android:layout_weight="1"/>
@@ -57,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Episode"
+                android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"/>
 
@@ -65,6 +68,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Body"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"/>
 
@@ -78,7 +88,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
@@ -86,20 +96,22 @@
             <ImageView
                 android:id="@+id/iv_previous"
                 android:src="@drawable/selector_previous"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"/>
 
             <ImageView
                 android:id="@+id/iv_play"
                 android:src="@drawable/selector_play"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
+                android:layout_width="64dp"
+                android:layout_height="64dp" />
 
             <ImageView
                 android:id="@+id/iv_next"
                 android:src="@drawable/selector_next"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"/>
 
         </LinearLayout>
         </LinearLayout>
