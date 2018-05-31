@@ -10,13 +10,13 @@ import android.graphics.BitmapFactory;
 
 public class Constants {
     public interface ACTION {
-        public static String MAIN_ACTION = "com.marothiatechs.customnotification.action.main";
-        public static String INIT_ACTION = "com.marothiatechs.customnotification.action.init";
-        public static String PREV_ACTION = "com.marothiatechs.customnotification.action.prev";
-        public static String PLAY_ACTION = "com.marothiatechs.customnotification.action.play";
-        public static String NEXT_ACTION = "com.marothiatechs.customnotification.action.next";
-        public static String STARTFOREGROUND_ACTION = "com.marothiatechs.customnotification.action.startforeground";
-        public static String STOPFOREGROUND_ACTION = "com.marothiatechs.customnotification.action.stopforeground";
+        public static String MAIN_ACTION = "org.healthunchained.healthunchained.action.main";
+        public static String INIT_ACTION = "org.healthunchained.healthunchained.action.init";
+        public static String PREV_ACTION = "org.healthunchained.healthunchained.action.prev";
+        public static String PLAY_ACTION = "org.healthunchained.healthunchained.action.play";
+        public static String NEXT_ACTION = "org.healthunchained.healthunchained.action.next";
+        public static String STARTFOREGROUND_ACTION = "org.healthunchained.healthunchained.action.startforeground";
+        public static String STOPFOREGROUND_ACTION = "org.healthunchained.healthunchained.action.stopforeground";
 
     }
 

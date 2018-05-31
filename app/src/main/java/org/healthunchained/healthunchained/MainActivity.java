@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -124,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void button_change(){
         btm_play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,4 +169,6 @@ public class MainActivity extends AppCompatActivity {
         serviceIntent.setAction(Constants.ACTION.STARTFOREGROUND_ACTION);
         startService(serviceIntent);
     }
+
+
 }

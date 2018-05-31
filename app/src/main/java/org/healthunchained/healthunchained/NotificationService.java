@@ -11,6 +11,7 @@ import android.widget.RemoteViews;
 
 public class NotificationService extends Service {
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -39,7 +40,7 @@ public class NotificationService extends Service {
         } else if (intent.getAction().equals(
                 Constants.ACTION.STOPFOREGROUND_ACTION)) {
 
-            Toast.makeText(this, "Service Stoped", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Service Stopped", Toast.LENGTH_SHORT).show();
             stopForeground(true);
             stopSelf();
         }
@@ -49,8 +50,8 @@ public class NotificationService extends Service {
     Notification status;
     private final String LOG_TAG = "NotificationService";
 
-    public void showNotification() {
-        // Using RemoteViews to bind custom layouts into Notification
+    private void showNotification() {
+// Using RemoteViews to bind custom layouts into Notification
         RemoteViews views = new RemoteViews(getPackageName(),
                 R.layout.status_bar);
         RemoteViews bigViews = new RemoteViews(getPackageName(),
@@ -102,7 +103,7 @@ public class NotificationService extends Service {
         bigViews.setOnClickPendingIntent(R.id.status_bar_collapse, pcloseIntent);
 
         views.setImageViewResource(R.id.status_bar_play,
-                R.drawable.ic_play_circle_outline_white);
+                R.drawable.ic_pause_circle_outline_white);
         bigViews.setImageViewResource(R.id.status_bar_play,
                 R.drawable.ic_pause_circle_outline_white);
 
@@ -118,7 +119,7 @@ public class NotificationService extends Service {
         status.contentView = views;
         status.bigContentView = bigViews;
         status.flags = Notification.FLAG_ONGOING_EVENT;
-        status.icon = R.mipmap.ic_launcher;
+        status.icon = R.drawable.ic_launcher_background;
         status.contentIntent = pendingIntent;
         startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, status);
     }
