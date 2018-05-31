@@ -3,14 +3,22 @@ package org.healthunchained.healthunchained;
 import android.os.IBinder;
 import android.app.Service;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import static org.healthunchained.healthunchained.App.CHANNEL_1_ID;
+import static org.healthunchained.healthunchained.Constants.NOTIFICATION_ID.FOREGROUND_SERVICE;
+
 public class NotificationService extends Service {
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 
     @Override
     public void onDestroy() {
@@ -47,23 +55,20 @@ public class NotificationService extends Service {
         return START_STICKY;
     }
 
-    Notification status;
-    private final String LOG_TAG = "NotificationService";
-
     private void showNotification() {
-// Using RemoteViews to bind custom layouts into Notification
+        // Using RemoteViews to bind custom layouts into Notification
         RemoteViews views = new RemoteViews(getPackageName(),
                 R.layout.status_bar);
         RemoteViews bigViews = new RemoteViews(getPackageName(),
                 R.layout.status_bar_expanded);
 
-// showing default album image
+        // showing default album image
         views.setViewVisibility(R.id.status_bar_icon, View.VISIBLE);
         views.setViewVisibility(R.id.status_bar_album_art, View.GONE);
         bigViews.setImageViewBitmap(R.id.status_bar_album_art,
                 Constants.getDefaultAlbumArt(this));
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(this, NotificationService.class);
         notificationIntent.setAction(Constants.ACTION.MAIN_ACTION);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -115,7 +120,15 @@ public class NotificationService extends Service {
 
         bigViews.setTextViewText(R.id.status_bar_album_name, "Album Name");
 
-        status = new Notification.Builder(this).build();
+        /*Notification status = new NotificationCompat.Builder(this, FOREGROUND_SERVICE)
+                .setContentTitle("asdfasdf")
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentIntent(pendingIntent)
+                .build();
+
+        startForeground(1, status);*/
+
+        Notification status = new NotificationCompat.Builder(this, CHANNEL_1_ID).build();
         status.contentView = views;
         status.bigContentView = bigViews;
         status.flags = Notification.FLAG_ONGOING_EVENT;
