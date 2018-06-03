@@ -69,6 +69,18 @@ public class MusicPlayerActivity extends AppCompatActivity {
             if (oneTimeOnly == 0){
                 player_seekBar.setMax((int) finalTime);
                 oneTimeOnly = 1;
+            } else if (oneTimeOnly == 1) {
+                player_seekBar.setMax((int) finalTime);
+                oneTimeOnly = 1;
+            }
+        } else if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            iv_play.setImageDrawable(ContextCompat.getDrawable(MusicPlayerActivity.this, R.drawable.selector_play));
+            if (oneTimeOnly == 0) {
+                player_seekBar.setMax((int) finalTime);
+                oneTimeOnly = 1;
+            } else if (oneTimeOnly == 1) {
+                player_seekBar.setMax((int) finalTime);
+                oneTimeOnly = 1;
             }
         }
 
@@ -88,17 +100,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(mediaPlayer.isPlaying() && mediaPlayer != null){
                     iv_play.setImageDrawable(ContextCompat.getDrawable(MusicPlayerActivity.this, R.drawable.selector_play));
-                    if (oneTimeOnly == 0) {
-                        player_seekBar.setMax((int) finalTime);
-                        oneTimeOnly = 1;
                         mediaPlayer.pause();
-                    }
                 }else{
                     mediaPlayer.start();
-                    if (oneTimeOnly == 0){
-                        player_seekBar.setMax((int) finalTime);
-                        oneTimeOnly = 1;
-                    }
                     iv_play.setImageDrawable(ContextCompat.getDrawable(MusicPlayerActivity.this, R.drawable.selector_pause));
                     myHandler.postDelayed(UpdateSongTime, 100);
                 }
@@ -186,4 +190,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
             myHandler.postDelayed(this,100);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

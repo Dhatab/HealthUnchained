@@ -96,8 +96,9 @@
             <ImageView
                 android:id="@+id/iv_previous"
                 android:src="@drawable/selector_previous"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"/>
 
             <ImageView
@@ -109,8 +110,10 @@
             <ImageView
                 android:id="@+id/iv_next"
                 android:src="@drawable/selector_next"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+
+                android:layout_width="52dp"
+                android:layout_height="52dp"
                 android:layout_weight="1"/>
 
         </LinearLayout>

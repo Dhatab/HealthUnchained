@@ -1,29 +1,28 @@
 package org.healthunchained.healthunchained;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
 import android.app.Service;
 import android.content.Intent;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.media.app.NotificationCompat.MediaStyle;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.view.View;
 import android.widget.RemoteViews;
-
-import static android.app.Notification.DEFAULT_SOUND;
-import static android.app.Notification.DEFAULT_VIBRATE;
-import static org.healthunchained.healthunchained.App.CHANNEL_1_ID;
-import static org.healthunchained.healthunchained.Constants.NOTIFICATION_ID.FOREGROUND_SERVICE;
+import static org.healthunchained.healthunchained.App.CHANNEL_2_ID;
 import static org.healthunchained.healthunchained.MainActivity.body;
 import static org.healthunchained.healthunchained.MainActivity.mediaPlayer;
 import static org.healthunchained.healthunchained.MainActivity.title;
 
 public class NotificationService extends Service {
+    private static final String CHANNEL_ID = "media_playback_channel";
 
     @Override
     public void onCreate() {
@@ -76,6 +75,7 @@ public class NotificationService extends Service {
         RemoteViews views = new RemoteViews(getPackageName(), R.layout.status_bar);
         RemoteViews bigViews = new RemoteViews(getPackageName(),R.layout.status_bar_expanded);
         views.setViewVisibility(R.id.status_bar_album_art, View.VISIBLE);
+        views.setImageViewBitmap(R.id.status_bar_album_art, Constants.getDefaultAlbumArt(this));
         bigViews.setImageViewBitmap(R.id.status_bar_album_art, Constants.getDefaultAlbumArt(this));
 
         Intent notificationIntent = new Intent(this, NotificationService.class);
@@ -118,15 +118,26 @@ public class NotificationService extends Service {
         bigViews.setTextViewText(R.id.status_bar_title, title);
         bigViews.setTextViewText(R.id.status_bar_body, body);
 
-        Notification status = new NotificationCompat.Builder(this, CHANNEL_1_ID).build();
+        /*NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_2_ID);
+        builder.setSmallIcon(R.drawable.ic_launcher_background)
+                .setContent(views)
+                .setSmallIcon(R.drawable.ic_music_note)
+                .setContentIntent(pendingIntent)
+                .setSound(null)
+                .setPriority(NotificationManager.IMPORTANCE_LOW)
+                .setCustomBigContentView(bigViews);
+        builder.setContentIntent(pendingIntent);
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(101, builder.build());*/
+
+        Notification status = new NotificationCompat.Builder(this, CHANNEL_2_ID).build();
         status.contentView = views;
         status.bigContentView = bigViews;
         status.flags = Notification.FLAG_ONGOING_EVENT;
         status.icon = R.drawable.ic_music_note;
         status.contentIntent = pendingIntent;
-        status.priority = -2;
         startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, status);
-
     }
 }
 
