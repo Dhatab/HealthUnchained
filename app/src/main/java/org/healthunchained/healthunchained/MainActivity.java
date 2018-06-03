@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        btm_play.setEnabled(false);
+
 
         //Database Ref
         mDatabase = FirebaseDatabase.getInstance().getReference().child("/episodes");
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         url = model.getUrl();
                         Uri mUri = Uri.parse(url);
 
+                        btm_play.setEnabled(true);
                         btm_music_text.setSelected(true);
                         btm_music_text.setText(title + ": " + body);
 
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            startService(view);
                             mediaPlayer.start();
                             btm_play.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.selector_pause));
                         }

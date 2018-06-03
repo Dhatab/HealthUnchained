@@ -88,7 +88,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(mediaPlayer.isPlaying() && mediaPlayer != null){
                     iv_play.setImageDrawable(ContextCompat.getDrawable(MusicPlayerActivity.this, R.drawable.selector_play));
-                    mediaPlayer.pause();
+                    if (oneTimeOnly == 0) {
+                        player_seekBar.setMax((int) finalTime);
+                        oneTimeOnly = 1;
+                        mediaPlayer.pause();
+                    }
                 }else{
                     mediaPlayer.start();
                     if (oneTimeOnly == 0){
@@ -175,7 +179,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         @Override
         public void run() {
             startTime = mediaPlayer.getCurrentPosition();
-            tv_start_time.setText(String.format("%d:%d",
+            tv_start_time.setText(String.format("%02d:%02d",
                     TimeUnit.MILLISECONDS.toMinutes((long)startTime),
                     TimeUnit.MILLISECONDS.toSeconds((long) startTime)- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes((long)startTime))));
             player_seekBar.setProgress((int)startTime);

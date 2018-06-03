@@ -14,6 +14,7 @@ public class Constants {
         public static String INIT_ACTION = "org.healthunchained.healthunchained.action.init";
         public static String PREV_ACTION = "org.healthunchained.healthunchained.action.prev";
         public static String PLAY_ACTION = "org.healthunchained.healthunchained.action.play";
+        public static String PAUSE_ACTION = "org.healthunchained.healthunchained.action.pause";
         public static String NEXT_ACTION = "org.healthunchained.healthunchained.action.next";
         public static String STARTFOREGROUND_ACTION = "org.healthunchained.healthunchained.action.startforeground";
         public static String STOPFOREGROUND_ACTION = "org.healthunchained.healthunchained.action.stopforeground";
