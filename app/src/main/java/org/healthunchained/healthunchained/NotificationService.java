@@ -23,6 +23,7 @@ import static org.healthunchained.healthunchained.MainActivity.title;
 
 public class NotificationService extends Service {
     private static final String CHANNEL_ID = "media_playback_channel";
+    public static String service_body, service_title;
 
     @Override
     public void onCreate() {
@@ -60,11 +61,10 @@ public class NotificationService extends Service {
             else if (intent.getAction().equals(Constants.ACTION.PREV_ACTION)) {
             Toast.makeText(this, "Clicked Previous", Toast.LENGTH_SHORT).show();*/
 
-
         } else if (intent.getAction().equals(
                 Constants.ACTION.STOPFOREGROUND_ACTION)) {
             stopForeground(true);
-            mediaPlayer.stop();
+            mediaPlayer.pause();
             stopSelf();
         }
         return START_STICKY;
@@ -95,14 +95,17 @@ public class NotificationService extends Service {
         closeIntent.setAction(Constants.ACTION.STOPFOREGROUND_ACTION);
         PendingIntent pcloseIntent = PendingIntent.getService(this, 0, closeIntent, 0);
 
+        /*Intent openApp = new Intent(this, MainActivity.class);
+        notificationIntent.setAction(Constants.ACTION.INIT_ACTION);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
+        PendingIntent pOpenApp = PendingIntent.getActivity(this, 0, openApp, 0);*/
+
         views.setOnClickPendingIntent(R.id.status_play, pplayIntent);
         views.setOnClickPendingIntent(R.id.status_bar_collapse, pcloseIntent);
         views.setOnClickPendingIntent(R.id.status_pause, ppauseIntent);
         bigViews.setOnClickPendingIntent(R.id.status_play, pplayIntent);
         bigViews.setOnClickPendingIntent(R.id.status_bar_collapse, pcloseIntent);
         bigViews.setOnClickPendingIntent(R.id.status_pause, ppauseIntent);
-
-
 
         /*Intent nextIntent = new Intent(this, NotificationService.class);
         nextIntent.setAction(Constants.ACTION.NEXT_ACTION);

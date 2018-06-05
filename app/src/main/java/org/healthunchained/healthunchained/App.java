@@ -11,7 +11,7 @@ import android.os.Build;
  */
 
 public class App extends Application {
-    public static final String CHANNEL_2_ID = "channel2";
+    public static final String CHANNEL_2_ID = "Health Unchained";
 
     @Override
     public void onCreate() {
@@ -22,7 +22,7 @@ public class App extends Application {
     private void createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel2 = new NotificationChannel(
-                    CHANNEL_2_ID, "channel 2", NotificationManager.IMPORTANCE_LOW
+                    CHANNEL_2_ID, "Health Unchained", NotificationManager.IMPORTANCE_LOW
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel2);
